@@ -1,0 +1,9 @@
+Plan:
+ Add token to thing
+  --  token retrieved from API
+  -- save token in session? service?
+    -- AuthService, probably
+ Display list of Things
+  -- use token to request endpoint
+    -- ApiService would be smart
+ Do it again, documenting as we go
