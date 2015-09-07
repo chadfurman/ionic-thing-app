@@ -16,6 +16,18 @@ angular.module('main', [
     .state('login', {
       url: '/login',
       templateUrl: 'main/templates/login.html',
-      controller: 'LoginCtrl as ctrl'
-    });
+      controller: 'LoginCtrl as ctrl',
+      data: {
+        requireAuth: false
+      }
+    })
+    .state('list', {
+      url: '/list',
+      templateUrl: 'main/templates/list.html',
+      controller: 'ListCtrl as ctrl',
+      data: {
+        requireAuth: true
+      }
+    })
+    ;
 });
