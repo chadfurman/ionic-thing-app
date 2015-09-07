@@ -10,13 +10,12 @@ angular.module('main', [
   console.log('Allo! Allo from your module: ' + 'main');
 
   // ROUTING with ui.router
-  $urlRouterProvider.otherwise('/main');
+  $urlRouterProvider.otherwise('/login');
   $stateProvider
     // this state is placed in the <ion-nav-view> in the index.html
-    .state('main', {
-      url: '/main',
-      template: '<ion-view view-title="main"></ion-view>',
-      // templateUrl: 'main/templates/<someTemplate>.html',
-      // controller: 'SomeCtrl as ctrl'
+    .state('login', {
+      url: '/login',
+      templateUrl: 'main/templates/login.html',
+      controller: 'LoginCtrl as ctrl'
     });
 });
