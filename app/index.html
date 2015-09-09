@@ -4,8 +4,18 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+-->
+    <!-- Allow requests to foo.com -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' localhostpc.com:1337">
     <title>thing</title>
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    I<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
@@ -51,7 +61,10 @@
     <!-- build:js scripts/app.js -->
     <!-- inject:js -->
     <script src="main/main.js"></script>
+    <script src="main/services/auth-serv.js"></script>
+    <script src="main/services/api-serv.js"></script>
     <script src="main/controllers/login-ctrl.js"></script>
+    <script src="main/controllers/list-ctrl.js"></script>
     <script src="main/constants/config-const.js"></script>
     <script src="app.js"></script>
     <!-- endinject -->
