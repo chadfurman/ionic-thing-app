@@ -1,12 +1,18 @@
 'use strict';
 angular.module('main')
-.controller('LoginCtrl', function ($window) {
+.controller('LoginCtrl', function ($window, $state, Auth) {
   console.log('Login Controller');
+  /*
   var controller = this;
 
   this.authUrl = 'http://localhostpc.com:1337/auth';
+  */
 
   this.login = function () {
+    console.log('login skipped');
+    Auth.persistToken('4/oTYs_kpGl5Xwk0aNhYy9tyfDYpVMSuxzBF5Z9t3WWoI');
+    $state.transitionTo('list');
+    /*
     var url = controller.authUrl + '/google';
     console.log('oauth target: ' + url);
     var ref = $window.cordova.InAppBrowser.open(url, '_blank', 'location=no');
@@ -28,10 +34,20 @@ angular.module('main')
       if (event.url.indexOf(callbackString) === 0) {
         var codeIndex = (event.url).indexOf('?code=');
         if (codeIndex >= 0) {
-          $window.alert(event.url.substring(codeIndex + 6));
+          var code = event.url.substring(codeIndex + 6);
+          if (code.slice(-1) === '#') {
+            code = code.substring(0, code.length - 1); // remove hashtag if present
+          }
+          Auth.persistToken(code);
+          console.log('transitioning to list state');
+          $state.transitionTo('list');
+        } else {
+          console.log('code not provided');
         }
+        ref.close();
       }
     });
+    */
 
   };
 
