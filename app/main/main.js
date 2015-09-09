@@ -6,7 +6,6 @@ angular.module('main', [
   // TODO: load other modules selected during generation
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
-
   console.log('Allo! Allo from your module: ' + 'main');
 
   // ROUTING with ui.router
@@ -30,4 +29,22 @@ angular.module('main', [
       }
     })
     ;
+})
+.run(function ($rootScope, $state, Auth) {
+  if (Auth) {
+    console.log('Auth Service Loaded');
+  }
+
+  $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState) {
+    console.log('Transitioning into ' + toState + ' from ' + fromState);
+    if (toState.data.requireAuth) {
+      if (!Auth.isAuthenticated()) {
+        console.log('Unauthorized');
+        $state.transitionTo('login');
+        event.preventDefault();
+      } else {
+        console.log('Authorized');
+      }
+    }
+  });
 });
