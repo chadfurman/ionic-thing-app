@@ -6,8 +6,7 @@ angular.module('main')
   this.listThings = function (cb) {
     console.log('calling listThings API endpoint');
 
-    console.log(baseUrl + '/thing');
-    $http.get(baseUrl + '/thing', {headers: {'X-Bearer-Token': Auth.retrieveToken()}}).then(
+    $http.get(baseUrl + '/user/1/things', {headers: {'X-Bearer-Token': Auth.retrieveToken()}}).then(
       function (successResponse) {
         console.log('success: ' + angular.toJson(successResponse, true));
         cb(successResponse);
