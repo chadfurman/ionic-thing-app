@@ -1,9 +1,10 @@
-Plan:
- Add token to thing
-  --  token retrieved from API
-  -- save token in session? service?
-    -- AuthService, probably
- Display list of Things
-  -- use token to request endpoint
-    -- ApiService would be smart
- Do it again, documenting as we go
+# Thing App for Oauth API
++ [deploy api](https://github.com/shadelotus/oauth-trials-and-tribulations)
++ npm install
++ bower install
++ gulp watch
+
+### note
+The user id is hardcoded to 1 for the lists endpoint
+You'll need an access token from the API for the web-based version
+The mobile app gets the token via oauth
